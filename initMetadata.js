@@ -27,7 +27,7 @@ admin.save(function (err, result) {
     }
 });
 
-//Insert Nicor user and development device linked to Nicor
+//Insert simple user with simple data
 var user= new User();
 user.username='user';
 user.password='password';
@@ -42,6 +42,7 @@ user.save(function (err, result) {
     } else {
         console.log('user insered -->' + result);
     }
+    //TODO create a car and link basic data
 });
 
 //MongoDB scripts
