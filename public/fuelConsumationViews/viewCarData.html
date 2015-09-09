@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="spinner" ng-show="showSpinner"></div>
+    <br/>
+    <highchart id="chart1" config="chartConfig" class="span9" ></highchart>
+    <div class="row">
+        <div class="col-sm-4">
+            <p class="input-group" >
+                <input type="text"
+                       class="form-control date-width"
+                       datepicker-popup="{{format}}"
+                       ng-model="refuellingFilter.date"
+                       is-open="opened"
+                       datepicker-options="dateOptions"
+                       ng-required="true"
+                       close-text="Close"
+                       ng-change="onChangeDate()"
+                       placeholder="Filter by Day"/>
+                <span class="input-group-btn">
+                    <button type="button"
+                            class="btn btn-default"
+                            ng-click="open($event)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" class="form-control"  placeholder="Filter by Brand" ng-model="refuellingFilter.brand"/>
+        </div>
+        <div class="col-sm-4">
+             <input type="text" class="form-control" placeholder="Filter by City" ng-model="refuellingFilter.city"/>
+        </div>
+    </div>
+    <br/>
+    <table class="table table-striped">
+        <tr>
+            <th ng-click="sortByField('date')">Date</th>
+            <th>Amount (€)</th>
+            <th>FuelPrice (€/l)</th>
+            <th>Liters</th>
+            <th>Kms</th>
+            <th>Consumation</th>
+            <th>Brand</th>
+            <th>Location</th>
+            <th>Address</th>
+        </tr>
+        <tr ng-repeat="r in refuellings | filter: refuellingFilter | orderBy:sortBy:reverse">
+            <td>{{r.date | date}}</td>
+            <td>{{r.amount}}</td>
+            <td>{{r.fuelprice}}</td>
+            <td>{{r.liters | number:3 }}</td>
+            <td>{{r.kms}}</td>
+            <td>{{r.consumation | number:3 }}</td>
+            <td>{{r.brand}}</td>
+            <td>{{r.city}}</td>
+            <td>{{r.address}}</td>
+        </tr>
+    </table>
+
+    <nav>
+        <ul class="pager">
+            <li><a href="#/fuelconsumation/viewcars">Back to Cars</a></li>
+        </ul>
+    </nav>
+</div>

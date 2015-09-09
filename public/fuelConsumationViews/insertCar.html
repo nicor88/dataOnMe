@@ -1,0 +1,74 @@
+<div class="container">
+    <h2>Insert a new car</h2>
+    <form class="form-horizontal" ng-submit="processForm()">
+        <!--Brand-->
+        <div class="form-group">
+            <label class="required control-label col-sm-2" for="brand">Brand*</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="name" id="brand"
+                       placeholder="Brand" required="true" ng-model="formData.brand"/>
+            </div>
+        </div>
+        <!--Model-->
+        <div class="form-group">
+            <label class="required control-label col-sm-2" for="model">Model*</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="model" id="model"
+                       placeholder="Model" required="true" ng-model="formData.model"/>
+            </div>
+        </div>
+        <!--Fuel Type-->
+        <div class="form-group">
+            <label class="required control-label col-sm-2">Fuel Type*:</label>
+            <div class="col-sm-10">
+                <select ng-options="type as type for type in fuelTypes" ng-model="formData.fuel" ></select>
+            </div>
+        </div>
+        <!--Year of Imatriculation-->
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="year">Year of Imatriculation:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" name="year" id="year"
+                       placeholder="Year"  min="1900" max="2100" ng-model="formData.year"/>
+            </div>
+        </div>
+        <!--Car Name-->
+        <div class="form-group">
+            <label class="required control-label col-sm-2" for="name">Vehicle registration plate *</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="name" id="name"
+                       placeholder="Vehicle registration plate e.g. DB450EF" required="true" ng-model="formData.name"/>
+            </div>
+        </div>
+        <!--Car Description-->
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="description">Car Description:</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3" name="description" id="description"
+                          placeholder="Description" ng-model="formData.description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">
+                    <span class="glyphicon glyphicon-send"></span> Insert
+                </button>
+
+            </div>
+        </div>
+    </form>
+
+    <div ng-show="insertsuccess" class="alert alert-success" role="alert">
+        {{info}}
+    </div>
+
+    <div ng-show="inserterror" class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+
+    <nav>
+        <ul class="pager">
+            <li><a href="#/fuelconsumation/viewcars">Back to Cars</a></li>
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,39 @@
+{
+  "name": "dataonme",
+  "version": "0.0.1",
+  "description": "framework to collect and visualize data from the user",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://gitaws:/home/git/repo/dataonme.git"
+  },
+  "keywords": [
+    "data-visualization"
+  ],
+  "author": "nicor88",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.12.3",
+    "cookie-parser": "^1.3.4",
+    "ejs": "^2.3.1",
+    "express": "^4.12.3",
+    "express-session": "^1.11.1",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.12.3",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-nodemon": "^0.4.0",
+    "moment": "^2.10.2",
+    "mongoose": "^4.0.2",
+    "passport": "^0.2.1",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0"
+  }
+}

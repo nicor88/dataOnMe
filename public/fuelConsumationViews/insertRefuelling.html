@@ -1,0 +1,244 @@
+<div class="container">
+    <br/>
+    <div ng-show="firstInsert">
+        <h3 style="text-align: center"> First Refuelling</h3>
+        <!-- First Insert -->
+        <form class="form-horizontal" ng-submit="insertForm()">
+            <!--Amount of Money-->
+            <div class="form-group">
+                <label class="required control-label col-sm-2" for="amount">Amount of Money (€)*:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="number" min="0" step="any"  name="amount" id="amount"
+                           placeholder="Amount of Money" required="true" ng-model="formData.amount"/>
+                </div>
+            </div>
+            <!-- Payment Type-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="amount">Type of Payment:</label>
+                <div class="col-sm-10">
+                    <select ng-options="type as type for type in paymentsType" ng-model="formData.paymentType" ></select>
+                </div>
+            </div>
+            <!-- Fuel Price-->
+            <div class="form-group">
+                <label class="required control-label col-sm-2" for="fuelprice">Fuelprice (€/l)*:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="number" min="0"  step="any" name="fuelprice" id="fuelprice"
+                           placeholder="E.g. 1.52 €/l" required="true" ng-model="formData.fuelprice"/>
+                </div>
+            </div>
+            <!-- Fuel Type-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="amount">Fuel Type:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text"  name="fueltype" id="fueltype"
+                           ng-model="formData.fueltype" readonly/>
+                </div>
+            </div>
+
+            <!--Brand-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="brand">Brand:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="name" id="brand"
+                           placeholder="E.g. Agip, Esso, IP" ng-model="formData.brand"/>
+                </div>
+            </div>
+
+            <!--City-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="city">City:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="city" id="city"
+                           placeholder="City" ng-model="formData.city"/>
+                </div>
+            </div>
+
+            <!--Address-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="address">Address:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="address" id="address"
+                           placeholder="Address" ng-model="formData.address"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-send"></span> Insert
+                    </button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div ng-show="showUpdateAndInsert">
+        <h3 style="text-align: center"> Update Last Refueling: {{updateData.date | date}} </h3>
+        <table class="table">
+            <tr>
+                <th>Amount of Money (€)</th>
+                <th>Fuel Price (€/l)</th>
+                <th>Liters</th>
+                <th>Consumation Estimated (km/l)</th>
+            </tr>
+            <tr>
+                <td>{{updateData.amount}}</td>
+                <td>{{updateData.fuelprice}}</td>
+                <td>{{ updateData.amount/updateData.fuelprice | number}}</td>
+                <td>{{ updateData.kms/( updateData.amount/updateData.fuelprice) | number}}</td>
+            </tr>
+        </table>
+        <br/>
+
+        <form class="form-horizontal" ng-submit="updateAndInsertForm()">
+            <!-- Amount of Money-->
+            <div class="form-group">
+                <label class="required control-label col-sm-2" for="amount">Amount of Money *:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text"  name="amount"
+                           required="true"  ng-model="updateData.amount" />
+                </div>
+            </div>
+            <!-- Kms-->
+            <div class="form-group">
+                <label class="required control-label col-sm-2" for="amount">Kms Travelled since {{ updateData.date | date}}*:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text"  name="kms" id="kms"
+                           required="true"  ng-model="updateData.kms" />
+                </div>
+            </div>
+
+            <h3 style="text-align: center"> Insert Data for New Refueling</h3>
+            <div class="form-group">
+                <label class="required control-label col-sm-2" for="amount">Amount of Money (€)*:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="number" min="0" step="any"  name="amount"
+                           placeholder="Amount of Money" required="true" ng-model="formData.amount"/>
+                </div>
+            </div>
+            <!-- Payment Type-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="amount">Type of Payment:</label>
+                <div class="col-sm-10">
+                    <select ng-options="type as type for type in paymentsType" ng-model="formData.paymentType" ></select>
+                </div>
+            </div>
+            <!-- Fuel Price-->
+            <div class="form-group">
+                <label class="required control-label col-sm-2" for="fuelprice">Fuelprice (€/l)*:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="number" min="0"  step="any" name="fuelprice"
+                           placeholder="E.g. 1.52 €/l" required="true" ng-model="formData.fuelprice"/>
+                </div>
+            </div>
+            <!-- Fuel Type-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="amount">Fuel Type:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text"  name="fueltype"
+                           ng-model="formData.fueltype" readonly/>
+                </div>
+            </div>
+            <!--Brand-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="brand">Brand:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="name"
+                           placeholder="E.g. Agip, Esso, IP" ng-model="formData.brand"/>
+                </div>
+            </div>
+            <!--City-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="city">City:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="city"
+                           placeholder="City" ng-model="formData.city"/>
+                </div>
+            </div>
+            <!--Address-->
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="address">Address:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="address"
+                           placeholder="Address" ng-model="formData.address"/>
+                </div>
+            </div>
+            <!-- Update and Insert button-->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-send"></span> Update & Insert
+                    </button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div ng-show="onlyUpdate">
+        <h3 style="text-align: center"> Update Last Refueling: {{updateData.date | date}} </h3>
+        <table class="table">
+            <tr>
+                <th>Amount of Money (€)</th>
+                <th>Fuel Price (€/l)</th>
+                <th>Liters</th>
+                <th>Consumation Estimated (km/l)</th>
+            </tr>
+            <tr>
+                <td>{{updateData.amount}}</td>
+                <td>{{updateData.fuelprice}}</td>
+                <td>{{ updateData.amount/updateData.fuelprice}}</td>
+                <td>{{ updateData.kms/updateData.liters}}</td>
+            </tr>
+        </table>
+        <br/>
+        <form class="form-horizontal" ng-submit="updateForm()">
+            <!-- Amount of Money-->
+            <div class="form-group">
+                <label class="required control-label col-sm-2" for="amount">Amount of Money *:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text"  name="amount"
+                           required="true"  ng-model="updateData.amount" />
+                </div>
+            </div>
+            <!-- Kms-->
+            <div class="form-group">
+                <label class="required control-label col-sm-2" for="amount">Kms Travelled since {{ updateData.date | date}}*:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text"  name="kms"
+                           required="true"  ng-model="updateData.kms" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-send"></span> Update
+                    </button>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!--<pre>
+        {{formData}}
+        {{updateData}}
+    </pre>-->
+
+    <div ng-show="insertsuccess" class="alert alert-success" role="alert">
+        {{info}}
+    </div>
+
+    <div ng-show="inserterror" class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+
+    <nav>
+        <ul class="pager">
+            <li><a href="#/fuelconsumation/viewcars">Back to Cars</a></li>
+        </ul>
+    </nav>
+
+</div>

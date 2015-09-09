@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/signin.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <form class="form-signin" method="post" action="/signin<% if(typeof(pre) !== 'undefined'){ %>?pre=<%= pre%><% } %>">
+        <h2 class="form-signin-heading" align="center">Login</h2>
+        <p>
+            <!--<label for="username">username</label>-->
+            <input type="text" name="username" id="username" class="form-control"
+                   placeholder="username" required="true"/>
+        </p>
+        <p>
+            <!--<label for="password">password</label>-->
+            <input type="password" name="password" id="password" class="form-control"
+                   placeholder="password" required="true"/>
+        </p>
+        <p>
+            <input class="btn btn-lg btn-primary btn-block" type="submit" name="signin" id="signin" value="Login"/>
+        </p>
+        <!--<h3 align="center" ><a href="/signup" title="register">Registration</a></h3>-->
+        <!--<p align="center">
+            <a href="/">Home</a>
+        </p>-->
+
+        <ul class="pager">
+            <li><a href="/">Home</a></li>
+        </ul>
+        <% if(typeof(errorMessage) !== 'undefined') {%>
+        <div class="alert alert-danger" role="alert">
+            <span><%= errorMessage %></span>
+        </div>
+        <% } %>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>

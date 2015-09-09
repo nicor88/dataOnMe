@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="spinner" ng-show="showSpinner"></div>
+    <ul class="breadcrumb">
+        <li><a href="#/fuelconsumation/viewcars">Cars</a></li>
+        <li><a href="#/fuelconsumation/viewcardashboard/{{carId}}">Dashboard</a></li>
+        <li class="active"> Dashboard {{monthYear}}</li>
+    </ul>
+    <h2 style="text-align: center;">{{dashboard_title}}</h2>
+    <br/>
+    <highchart id="chart1" config="chartLineConfig" class="span9" ></highchart>
+    <br/>
+    <!-- Add line chart there with fuel consumation-->
+    <table class="table table-striped">
+        <tr>
+            <th ng-click="sortByField('date')">Date</th>
+            <th>Amount (€)</th>
+            <th>FuelPrice (€/l)</th>
+            <th>Liters</th>
+            <th>Kms</th>
+            <th>Consumation</th>
+            <th>Brand</th>
+            <th>Location</th>
+            <th>Address</th>
+        </tr>
+        <tr ng-repeat="r in refuellings | filter: refuellingFilter | orderBy:sortBy:reverse">
+            <td>{{r.date | date}}</td>
+            <td>{{r.amount}}</td>
+            <td>{{r.fuelprice}}</td>
+            <td>{{r.liters | number:3 }}</td>
+            <td>{{r.kms}}</td>
+            <td>{{r.consumation | number:3 }}</td>
+            <td>{{r.brand}}</td>
+            <td>{{r.city}}</td>
+            <td>{{r.address}}</td>
+        </tr>
+    </table>
+    <nav>
+        <ul class="pager">
+            <li><a href="#/fuelconsumation/viewcardashboard/{{carId}}">Back</a></li>
+        </ul>
+    </nav>
+</div>

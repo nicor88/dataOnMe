@@ -1,0 +1,47 @@
+<div class="container">
+    <br/>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    <br/>
+    <div class="row" >
+        <div class="col-sm-6 col-md-4" ng-repeat="car in cars">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4>Vehicle registration plate: <b>{{car.name}}</b></h4>
+                    <p>Model: <b>{{car.brand}} {{car.model}}</b></p>
+                    <p>Year: <b>{{ car.year}} </b> </p>
+                    <p>Fuel type: <b>{{car.fuel}} </b></p>
+                    <p>Description : <b>{{car.description}} </b></p>
+                    <p>
+                        <a href="#/fuelconsumation/viewcardata/{{car._id}}" class="btn btn-success" role="button">
+                            All Data
+                        </a>
+                        <!--<a href="#/fuelconsumation/viewcarcharts/{{car._id}}" class="btn btn-success" role="button">
+                            <span class="glyphicon glyphicon-stats"></span>
+                        </a>-->
+                        <a href="#/fuelconsumation/viewcardashboard/{{car._id}}" class="btn btn-success" role="button">
+                            <span class="glyphicon glyphicon-dashboard"></span>
+                        </a>
+                        <a href="#/fuelconsumation/insertrefuelling/{{car._id}}" class="btn btn-primary" role="button">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                        <a href="#/fuelconsumation/updatecar/{{car._id}}" class="btn btn-info" role="button">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </a>
+                        <a href="#/fuelconsumation/removecar/{{car._id}}" class="btn btn-danger" role="button">
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4 style="text-align: center;">
+                        <a href="#/fuelconsumation/insertcar"><span class="glyphicon glyphicon-plus"></span> New car</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

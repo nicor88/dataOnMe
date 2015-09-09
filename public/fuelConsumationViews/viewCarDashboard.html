@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="spinner" ng-show="showSpinner"></div>
+    <ul class="breadcrumb">
+        <li><a href="#/fuelconsumation/viewcars">Cars</a></li>
+        <li class="active">Dashboard</li>
+    </ul>
+    <h2 style="text-align: center;">{{dashboard_output}}</h2>
+    <div style="display: table;margin-right: auto; margin-left: auto;">
+        Year:
+        <select ng-options="year as year for year in years "
+                ng-model="selectedYear"
+                ng-change="updateChart()">
+        </select>
+    </div>
+    <br/>
+    <div style="width: 100%;height: 30%;">
+        <highchart id="bar" config="chartBarConfig" style="float: left;width: 100%;height: 40vh;"></highchart>
+    </div>
+    <highchart id="pie1" config="chartConfig1"  style="float: left;width: 50%;height: 25vh;"></highchart>
+    <highchart id="pie2" config="chartConfig2"  style="float: right;left: 50%;width: 50%;height: 25vh;"></highchart>
+
+
+</div>
