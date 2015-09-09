@@ -17,6 +17,6 @@ Start server with:
 To have basic data run:
 * node initMetadata.js
 
-Login in the plaform using:
-user    : user
+Login in the plaform using:  
+user    : user  
 password: password
