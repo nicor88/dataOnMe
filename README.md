@@ -11,8 +11,8 @@ Install bower globally if you don't have it with:
 * npm install -g bower
 
 Start server with:
-* node serer.js
-
+* node server.js
+-------------------------
 To have basic data run:
 * node initMetadata.js
 
