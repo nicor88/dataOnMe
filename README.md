@@ -6,7 +6,7 @@ and to have statistics about your vehicle consumption and monthly charges
 
 The plaform is based on node.
 Install node libraries with:
-* npm install
+* npm install  
 Install bower globally if you don't have it with:
 * npm install -g bower
 
