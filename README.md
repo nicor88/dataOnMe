@@ -12,6 +12,7 @@ Install bower globally if you don't have it with:
 
 Start server with:
 * node server.js
+
 -------------------------
 To have basic data run:
 * node initMetadata.js
