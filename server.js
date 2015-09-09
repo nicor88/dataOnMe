@@ -11,7 +11,6 @@ var db = require('./configs/db');
 var app = express();
 
 app.set('port', process.env.PORT || 5000);
-//Set public folder used by server
 app.set('views', path.join(__dirname, 'public'));
 app.use('/', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
