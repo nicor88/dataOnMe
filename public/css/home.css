@@ -284,12 +284,24 @@ body {
     webkit-tap-highlight-color: rgba(255,255,255,.2);
 }
 
-.customBg{
-    background: red;
+.main{
+    background: dimgrey;
+    height: 100vh;
+}
+
+.about{
+    background: black;
     height: 100vh;
     width: 100%;
     overflow-x: hidden;
 }
+.contact{
+    background: black;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
 
 @media(min-width:768px) {
     .intro {
@@ -343,6 +355,14 @@ body {
 @media(min-width:767px) {
     .content-section {
         padding-top: 250px;
+    }
+}
+
+@media(min-width:768px) {
+    p {
+        margin: 0 0 35px;
+        font-size: 20px;
+        line-height: 1.6;
     }
 }
 
