@@ -1,5 +1,13 @@
 (function(){
-    var insertRefuellingController= function($scope,$routeParams,$http,$q,$window) {
+    var insertRefuellingController= function($scope,$routeParams,$http,$q,$window,authFactory) {
+        authFactory.isAuth()
+            .success(function(data){
+                if(!data.logged) $window.location='/login';
+            })
+            .error(function(data,status,heders,config){
+                //TODO handle error
+            });
+
         var carId=$routeParams.carId;
         var now=new Date();
         $scope.inserterror=false;
@@ -19,10 +27,6 @@
                 });
         };
         initInsertRefuelling();
-        $http.get("isAuth?date="+now.toISOString(),{cache: false})
-            .success(function (data) {
-                if(!data.logged) $window.location='/login';
-            });
 
         $http.get("lastrefuelling/"+carId+"?date="+now.toISOString(),{cache: false})
             .success(function (refuelling) {
@@ -147,6 +151,6 @@
         };
 
     };
-    insertRefuellingController.$inject=['$scope','$routeParams','$http','$q','$window'];
+    insertRefuellingController.$inject=['$scope','$routeParams','$http','$q','$window','authFactory'];
     angular.module('dataOnMe').controller('insertRefuellingController',insertRefuellingController);
 })();

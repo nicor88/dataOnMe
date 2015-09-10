@@ -1,5 +1,12 @@
 (function(){
-    var insertCarController= function($scope,$http,$window) {
+    var insertCarController= function($scope,$http,$window,authFactory) {
+        authFactory.isAuth()
+            .success(function(data){
+                if(!data.logged) $window.location='/login';
+            })
+            .error(function(data,status,heders,config){
+                //TODO handle error
+            });
         var now=new Date();
         $scope.inserterror=false;
         $scope.insertsuccess=false;
@@ -46,6 +53,6 @@
         };
 
     };
-    insertCarController.$inject=['$scope','$http','$window'];
+    insertCarController.$inject=['$scope','$http','$window','authFactory'];
     angular.module('dataOnMe').controller('insertCarController',insertCarController);
 })();

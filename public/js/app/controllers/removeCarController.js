@@ -1,5 +1,12 @@
 (function(){
-    var removeCarController= function($scope,$routeParams,$http,$window) {
+    var removeCarController= function($scope,$routeParams,$http,$window,authFactory) {
+        authFactory.isAuth()
+            .success(function(data){
+                if(!data.logged) $window.location='/login';
+            })
+            .error(function(data,status,heders,config){
+                //TODO handle error
+            });
         var carId=$routeParams.carId;
         var now=new Date();
         $scope.showdeleteform=true;
@@ -14,10 +21,6 @@
                     $scope.car.brand=carToRemove.brand;
                     $scope.car.model=carToRemove.model;
                 }
-            });
-        $http.get("isAuth?date="+now.toISOString(),{cache: false})
-            .success(function (data) {
-                if(!data.logged) $window.location='/login';
             });
 
         $scope.processForm = function() {
@@ -52,6 +55,6 @@
         };
 
     };
-    removeCarController.$inject=['$scope','$routeParams','$http','$window'];
+    removeCarController.$inject=['$scope','$routeParams','$http','$window','authFactory'];
     angular.module('dataOnMe').controller('removeCarController',removeCarController);
 })();

@@ -1,16 +1,18 @@
 (function(){
-    var updateCarController= function($scope,$routeParams,$http,$window) {
+    var updateCarController= function($scope,$routeParams,$http,$window,authFactory) {
+        authFactory.isAuth()
+            .success(function(data){
+                if(!data.logged) $window.location='/login';
+            })
+            .error(function(data,status,heders,config){
+                //TODO handle error
+            });
+
         var carId=$routeParams.carId;
         var now=new Date();
         $scope.updateerror=false;
         $scope.updatesuccess=false;
         $scope.formData = {};
-
-        $http.get("isAuth?date="+now.toISOString(),{cache: false})
-            .success(function (data) {
-                if(!data.logged) $window.location='/login';
-            });
-
         $http.get("car/"+carId+"?date="+now.toISOString(),{cache: false})
             .success(function (car) {
                 if(car.length==1){
@@ -52,6 +54,6 @@
                 });
         };
     };
-    updateCarController.$inject=['$scope','$routeParams','$http','$window'];
+    updateCarController.$inject=['$scope','$routeParams','$http','$window','authFactory'];
     angular.module('dataOnMe').controller('updateCarController',updateCarController);
 })();

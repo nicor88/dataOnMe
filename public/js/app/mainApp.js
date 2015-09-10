@@ -7,9 +7,13 @@ var app = angular.module('dataOnMe', ['ngRoute','highcharts-ng','ui.bootstrap'])
                 templateUrl: '../fuelConsumationViews/viewCars.html',
                 controller: 'viewCarsController'
             })
-            //USER update
+            //USER
             .when('/updateuserdata', {
                 templateUrl: '../dataOnMeViews/updateUserData.html',
+                controller: 'updateUserController'
+            })
+            .when('/updateuserpass', {
+                templateUrl: '../dataOnMeViews/updateUserPassword.html',
                 controller: 'updateUserController'
             })
             //Car CRUD
