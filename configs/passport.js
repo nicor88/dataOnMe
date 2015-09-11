@@ -58,7 +58,7 @@ module.exports = function(app, passport) {
         // save the user
         newUser.save(function(err) {
             if (err){
-                return done(err);
+                return done(null, false, {message: 'Choose another username!'});
             }
             return done(null, newUser, {message: 'User registered'});
         });

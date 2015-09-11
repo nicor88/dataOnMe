@@ -15,8 +15,6 @@ module.exports = function(app, passport){
     app.post('/signup', utilitiesAPI.signupPost);
     app.get('/signout', utilitiesAPI.signout);
     app.get('/isAuth', userAPI.isAuth);
-    //DEFAULT ROUTE
-    app.use(utilitiesAPI.default);
 
     //Car CRUD
     app.get('/cars', carsAPI.getCars);
@@ -34,4 +32,7 @@ module.exports = function(app, passport){
     app.get('/refuellings/years/:carId', refuellingsAPI.getYears);
     app.get('/refuellings/monthData/:carId/:monthYear', refuellingsAPI.getMonthData);
     app.get('/refuellings/statistics/:carId/:year', refuellingsAPI.getMonthsStatistics);
+
+    //DEFAULT ROUTE
+    app.use(utilitiesAPI.default);
 };
