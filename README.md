@@ -20,3 +20,7 @@ To have basic data run:
 Login in the plaform using:  
 user    : user  
 password: password
+
+-------------------------
+
+[Demo](http://52.27.176.15/)

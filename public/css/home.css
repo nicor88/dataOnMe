@@ -301,6 +301,9 @@ body {
     width: 100%;
     overflow-x: hidden;
 }
+.footer{
+    background: #151515;
+}
 
 
 @media(min-width:768px) {
