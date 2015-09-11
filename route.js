@@ -16,6 +16,9 @@ module.exports = function(app, passport){
     app.get('/signout', utilitiesAPI.signout);
     app.get('/isAuth', userAPI.isAuth);
 
+    //Users upadate
+    app.get('/userdata/:username',userAPI.getUserData);
+
     //Car CRUD
     app.get('/cars', carsAPI.getCars);
     app.get('/car/:carId', carsAPI.getCar);
