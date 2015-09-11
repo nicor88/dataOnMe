@@ -8,11 +8,11 @@ var app = angular.module('dataOnMe', ['ngRoute','highcharts-ng','ui.bootstrap'])
                 controller: 'viewCarsController'
             })
             //USER
-            .when('/updateuserdata', {
+            .when('/updateuserdata/:username', {
                 templateUrl: '../dataOnMeViews/updateUserData.html',
                 controller: 'updateUserController'
             })
-            .when('/updateuserpass', {
+            .when('/updateuserpass/:username', {
                 templateUrl: '../dataOnMeViews/updateUserPassword.html',
                 controller: 'updateUserController'
             })

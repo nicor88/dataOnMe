@@ -1,3 +1,4 @@
+var User = require ('../models/user');
 module.exports = {
     isAuth:  function(req, res){
         var data;
@@ -12,5 +13,14 @@ module.exports = {
             };
             return res.json(data);
         }
+    },
+    getUserData:function(req, res){
+
+    },
+    updateUserData: function(req, res){
+
+    },
+    updatePassword: function(req, res){
+
     }
 };
