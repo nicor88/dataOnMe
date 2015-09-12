@@ -8,6 +8,9 @@
                 //TODO handle error
             });
         var username=$routeParams.username;
+        $scope.inserterror=false;
+        $scope.insertsuccess=false;
+        $scope.userdata = {};
         $scope.messageUserData='messageUserData '+username;
         $scope.messagePass='messagePass '+username;
 
@@ -16,7 +19,7 @@
                 if(data.logged === "undefined"){
                     if(data.logged) $window.location='/login';
                 }else{
-                    $scope.user=data.registrationDate;
+                    $scope.userdata=data;
                 }
             })
             .error(function(data,status,heders,config){

@@ -82,3 +82,42 @@ th {
     background-size: 100%;
     z-index: 100;
 }
+
+.up{
+    float: left;
+    width: 100%;
+    height: 40vh;
+}
+
+.downLeft{
+    float: left;
+    width: 50%;
+    height: 25vh;
+}
+
+.downRight{
+    float: right;
+    left: 50%;
+    width: 50%;
+    height: 25vh;
+}
+
+@media only screen and (max-height: 500px) {
+    .up{
+        float: left;
+        width: 100%;
+        height: 50vh;
+    }
+    .downLeft{
+        float: left;
+        width: 50%;
+        height: 70vh;
+    }
+
+    .downRight{
+        float: right;
+        left: 50%;
+        width: 50%;
+        height: 70vh;
+    }
+}

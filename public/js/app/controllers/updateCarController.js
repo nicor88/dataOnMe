@@ -1,5 +1,5 @@
 (function(){
-    var updateCarController= function($scope,$routeParams,$http,$window,authFactory) {
+    var updateCarController= function($scope,$routeParams,$http,$window,authFactory,carsFactory) {
         authFactory.isAuth()
             .success(function(data){
                 if(!data.logged) $window.location='/login';
@@ -54,6 +54,6 @@
                 });
         };
     };
-    updateCarController.$inject=['$scope','$routeParams','$http','$window','authFactory'];
+    updateCarController.$inject=['$scope','$routeParams','$http','$window','authFactory','carsFactory'];
     angular.module('dataOnMe').controller('updateCarController',updateCarController);
 })();

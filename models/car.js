@@ -3,12 +3,12 @@ var Schema = mongoose.Schema;
 
 var CarSchema = mongoose.Schema({
     userId:{ type: Schema.Types.ObjectId, ref: 'users', required: true},
-    brand:{type: String,required:true},
-    model:{type: String,required:true},
+    brand:{type: String},
+    model:{type: String},
     name:{type: String,required:true},
     fuel:{type:String, required:true},
     year:{type: Number},
-    creationDate:{type: Date,required: true},
+    creationDate:{type: Date},
     description:{type: String}
 });
 

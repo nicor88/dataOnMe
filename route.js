@@ -16,8 +16,12 @@ module.exports = function(app, passport){
     app.get('/signout', utilitiesAPI.signout);
     app.get('/isAuth', userAPI.isAuth);
 
-    //Users upadate
+    //Users Utilities
     app.get('/userdata/:username',userAPI.getUserData);
+
+    //USER CRUD
+    app.get('/activation/:activationtoken',userAPI.activateUser);
+    app.get('/resendactivationmail/:username',userAPI.resendMail);
 
     //Car CRUD
     app.get('/cars', carsAPI.getCars);

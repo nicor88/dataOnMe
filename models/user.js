@@ -8,7 +8,8 @@ var UserSchema = mongoose.Schema({
     isAdmin:{type:Boolean},
     role: {type:String},
     registrationDate:{type:Date},
-    approved:{type:Boolean}
+    approved:{type:Boolean},
+    activationtoken:{ type: String}
 });
 
 UserSchema.pre('save', function(next) {
@@ -37,5 +38,18 @@ UserSchema.methods.validPassword = function(password) {
 UserSchema.statics.findByUsername = function (username, callback) {
     this.findOne({ username: username }, callback);
 };
+
+UserSchema.statics.findByActivationToken = function (activationtoken, callback) {
+    this.findOne({ activationtoken: activationtoken }, callback);
+};
+
+UserSchema.statics.updateUser = function (username,elementsToUpdate,callback) {
+    var conditions = { username: username };
+    var options = { multi: false };
+    this.update(conditions, elementsToUpdate, options, function (err, numAffected){
+        if(err) callback(err);
+        callback(false,numAffected);
+    });
+}
 
 module.exports = mongoose.model('User', UserSchema);

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title><%= title %></title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css">
+   <script src="../libs/jquery/dist/jquery.min.js"></script>
+   <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+   <h2 style="text-align: center;"> Activation Page</h2>
+
+   <% if(typeof(errormailactivation) !== 'undefined') {%>
+   <div class="alert alert-danger" role="alert">
+      <span><%= errormailactivation %></span>
+   </div>
+   <% } %>
+
+   <% if(typeof(mailactivation) !== 'undefined') {%>
+   <div class="alert alert-warning" style="text-align:center;" role="alert">
+      <span><%= mailactivation %></span>
+      <br/>
+      <% if(typeof(username) !== 'undefined') {%>
+         <ul class="pager">
+            <li>
+               <a href='/resendactivationmail/<%= username %>'>Resend Mail</a>
+            </li>
+         </ul>
+      <% } %>
+   </div>
+   <% } %>
+
+   <% if(typeof(infomailactivation) !== 'undefined') {%>
+   <div class="alert alert-success" role="alert">
+      <span><%= infomailactivation %></span>
+   </div>
+   <% } %>
+   <% if(typeof(activated) !== 'undefined') {%>
+   <div class="alert alert-success" role="alert">
+      <span><%= activated %></span>
+   </div>
+   <h3 style="text-align: center;"><a href="/login">Go to Login</a></h3>
+   <% } %>
+
+
+   <ul class="pager">
+      <li><a href="/">Home</a></li>
+   </ul>
+</div>
+</body>
+</html>
