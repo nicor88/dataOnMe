@@ -76,13 +76,19 @@ module.exports = function(grunt) {
         },
         exec: {
             loadToAWS:{
-                cmd: 'scp -r server-files/ nodejs@development-AWS:/home/nodejs/servers/dataonme'
+                cmd: 'scp -r server-files/. nodejs@development-AWS:/home/nodejs/servers/dataonme'
             },
             startDataOnMe:{
                 cmd: 'ssh nodejs@development-AWS forever start  --spinSleepTime 5000 servers/dataonme/server.js'
             },
             stopDataOnMe:{
                 cmd: 'ssh nodejs@development-AWS forever stop 1'
+            },
+            updateNodeLibs:{
+                cmd: 'ssh nodejs@development-AWS npm install --prefix /home/nodejs/servers/dataonme'
+            },
+            updateBowerLibs:{
+                cmd: 'ssh nodejs@development-AWS sh scripts/bowerDataOnMe.sh'
             },
             list_files: {
                 cmd: 'ls -l **'
@@ -105,11 +111,12 @@ module.exports = function(grunt) {
     });
     grunt.registerTask('start local server', ['nodemon']);
     /*grunt.registerTask('create dataonme.js', ['concat']);*/
-    grunt.registerTask('create dataonme.min.js', ['uglify']);
+    /*grunt.registerTask('create dataonme.min.js', ['uglify']);*/
     grunt.registerTask('validate JS', ['jshint']);
     grunt.registerTask('minification', ['cssmin','uglify']);
-    grunt.registerTask('create files for remote deploy on development-AWS', ['clean','copy','rename']);
+    grunt.registerTask('create files for remote deploy on development-AWS', ['cssmin','uglify','clean','copy','rename']);
     grunt.registerTask('copy server-files to development-AWS', ['exec:loadToAWS']);
-    grunt.registerTask('complete deploy', ['clean','copy','rename','exec:loadToAWS','exec:stopDataOnMe','exec:startDataOnMe']);
-    grunt.registerTask('list all files', ['exec:list_all_files']);
+    grunt.registerTask('complete deploy', ['clean','copy','rename','exec:loadToAWS','exec:stopDataOnMe','exec:updateNodeLibs','exec:updateBowerLibs','exec:startDataOnMe']);
+    grunt.registerTask('complete deploy - server down', ['clean','copy','rename','exec:loadToAWS','exec:updateNodeLibs','exec:updateBowerLibs','exec:startDataOnMe']);
+    /*grunt.registerTask('list all files', ['exec:list_all_files']);*/
 };
