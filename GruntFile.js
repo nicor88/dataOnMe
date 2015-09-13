@@ -1,13 +1,13 @@
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-rename');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-rename');
-    grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-exec');
 
     grunt.initConfig({
         // configure nodemon
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
                     {expand: true, src: ['public/js/*.js'], dest: 'server-files/'},
                     {expand: true, src: ['routes/**'], dest: 'server-files/'},
                     {expand: true, src: ['utilities/**'], dest: 'server-files/'},
-                    {expand: true, src: ['./*.js'], dest: 'server-files/'},
+                    {expand: true, src: ['./*.js','!GruntFile.js'], dest: 'server-files/'},
                     {expand: true, src: ['./*.json'], dest: 'server-files/'},
                     {expand: true, src: ['.bowerrc'], dest: 'server-files/'}
                 ]
@@ -46,14 +46,6 @@ module.exports = function(grunt) {
                 files: [
                     {src: ['server-files/configsRemote'], dest: 'server-files/configs'},
                 ]
-            }
-        },
-        shell: {
-            options: {
-                stderr: false
-            },
-            target: {
-                command: 'scp -r server-files/ nodejs@development-AWS:/home/nodejs/servers/dataonme'
             }
         },
         cssmin: {
@@ -82,12 +74,42 @@ module.exports = function(grunt) {
                 }
             }
         },
+        exec: {
+            loadToAWS:{
+                cmd: 'scp -r server-files/ nodejs@development-AWS:/home/nodejs/servers/dataonme'
+            },
+            startDataOnMe:{
+                cmd: 'ssh nodejs@development-AWS forever start  --spinSleepTime 5000 servers/dataonme/server.js'
+            },
+            stopDataOnMe:{
+                cmd: 'ssh nodejs@development-AWS forever stop 1'
+            },
+            list_files: {
+                cmd: 'ls -l **'
+            },
+            list_all_files: 'ls -la',
+            echo_grunt_version: {
+                cmd: function() { return 'echo ' + this.version; }
+            },
+            echo_name: {
+                cmd: function(firstName, lastName) {
+                    var formattedName = [
+                        lastName.toUpperCase(),
+                        firstName.toUpperCase()
+                    ].join(', ');
+
+                    return 'echo ' + formattedName;
+                }
+            }
+        }
     });
-    grunt.registerTask('start server', ['nodemon']);
+    grunt.registerTask('start local server', ['nodemon']);
     /*grunt.registerTask('create dataonme.js', ['concat']);*/
     grunt.registerTask('create dataonme.min.js', ['uglify']);
     grunt.registerTask('validate JS', ['jshint']);
     grunt.registerTask('minification', ['cssmin','uglify']);
-    grunt.registerTask('create files to remote deploy on development-AWS', ['clean','copy','rename']);
-    grunt.registerTask('copy server-files to development-AWS', ['shell']);
+    grunt.registerTask('create files for remote deploy on development-AWS', ['clean','copy','rename']);
+    grunt.registerTask('copy server-files to development-AWS', ['exec:loadToAWS']);
+    grunt.registerTask('complete deploy', ['clean','copy','rename','exec:loadToAWS','exec:stopDataOnMe','exec:startDataOnMe']);
+    grunt.registerTask('list all files', ['exec:list_all_files']);
 };
