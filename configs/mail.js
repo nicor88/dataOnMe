@@ -1,10 +1,10 @@
 module.exports = {
     'mailcheck':true,
-    'activationLinkLocal':'http://localhost:5000/activation/',
+    'activationLink':'http://localhost:5000/activation/',
     'gmail' : {
         service: 'Gmail',
         auth: {
-            user: 'mail@gmail.com',
+            user: 'user@gmail.com',
             pass: 'password'
         }
     },

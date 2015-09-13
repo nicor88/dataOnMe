@@ -80,7 +80,7 @@ module.exports = {
                     });
             }else {
                 if (user != null) {
-                    var registrationLink = mailconfig.activationLinkLocal + user.activationtoken;
+                    var registrationLink = mailconfig.activationLink + user.activationtoken;
                     var transporter = nodemailer.createTransport(mailconfig.gmail);
                     mailconfig.registrationMailEnglish.from = mailconfig.gmail.auth.user;
                     mailconfig.registrationMailEnglish.to = user.email;
@@ -95,7 +95,6 @@ module.exports = {
                                     errormailactivation: 'Error on sending mail, contact the administrator at ' + mailconfig.gmail.auth.user
                                 });
                         } else {
-                            console.log('Message sent: ' + info.response);
                             res.render('mainViews/activation', {
                                 title: 'Activation Page',
                                 infomailactivation: 'Mail sent to ' + user.email + '. Activate your account checking your mail!'

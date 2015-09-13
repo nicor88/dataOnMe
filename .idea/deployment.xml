@@ -5,7 +5,7 @@
       <paths name="development-AWS">
         <serverdata>
           <mappings>
-            <mapping deploy="dataonme" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="dataonme" local="$PROJECT_DIR$/server-files" web="/" />
           </mappings>
         </serverdata>
       </paths>
