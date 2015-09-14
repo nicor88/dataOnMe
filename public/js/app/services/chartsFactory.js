@@ -262,7 +262,7 @@
                     text: title
                 },
                 subtitle: {
-                    text: 'Last Update: '+ new Date()
+                    text: subtitle
                 },
                 series: series_chart,
                 options: {
