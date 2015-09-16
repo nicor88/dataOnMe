@@ -2,9 +2,9 @@
 .page.ng-enter 	{ z-index:8888; }
 
 .my-animation.ng-enter{
-    -webkit-animation:scaleUp 0.5s both ease-in;
+    /*-webkit-animation:scaleUp 0.5s both ease-in;
     -moz-animation:scaleUp 0.5s both ease-in;
-    animation:scaleUp 0.5s both ease-in;
+    animation:scaleUp 0.5s both ease-in;*/
 }
 
 .my-animation.ng-leave{
