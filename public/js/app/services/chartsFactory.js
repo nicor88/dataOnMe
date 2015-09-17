@@ -17,16 +17,14 @@
                 xAxis: {
                     title: {
                         text: xAxisLabel
-                    },
-
-                    labels: {
-                        rotation: -45,
+                    }
+                    ,labels: {
+                        rotation: -90,
                         style: {
-                            fontSize: '11px',
+                            fontSize: '10px',
                             fontFamily: 'Arial'
                         }
-                    },
-                    categories: xCategories
+                    },categories: xCategories
                 },
                 tooltip: {
                     pointFormat: '{point.y:.2f} Km/l'
@@ -34,6 +32,9 @@
                 yAxis: { title: { text: yAxisLabel } },
                 series: chart_series,
                 options: {
+                    exporting: {
+                        enabled: false
+                    } ,
                     chart: {
                         zoomType: 'xy'
                         /*,events: {
@@ -61,8 +62,8 @@
                     lang: {
                         back: "Go Back to Previous Chart",
                         refresh: "Refresh Chart"
-                    },
-                    exporting: {
+                    }
+                    /*,exporting: {
                         buttons: {
                             contextButton: {
                                 enabled: true
@@ -73,22 +74,22 @@
                             printButton: {
                                 enabled:false
                             }
-                            /*,back: {
+                            ,back: {
                              text: 'Back',
                              _titleKey: "back",
                              onclick: function() {
-                             console.log('clicked back');
+                                console.log('clicked back');
+                                }
                              }
-                             },
-                             refresh: {
-                             text: 'Refresh',
-                             _titleKey: "refresh",
-                             onclick: function() {
-                             console.log('clicked refresh');
-                             }
-                             }*/
+                             /!*,refresh: {
+                                text: 'Refresh',
+                                _titleKey: "refresh",
+                                onclick: function() {
+                                    console.log('clicked refresh');
+                                }
+                             }*!/
                         }
-                    }
+                    }*/
                 },
                 credits: {
                     enabled:false
@@ -347,7 +348,6 @@
             if(day<10) day='0'+day;
             return year+'-'+month+'-'+day;
         };
-
         return factory;
     };
 

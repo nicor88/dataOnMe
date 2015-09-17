@@ -10,7 +10,7 @@
     "angular-ui": "~0.4.0",
     "bootstrap": "latest",
     "font-awesome": "~4.3.0",
-    "highcharts": "4.0.0",
+    "highcharts": "4.1.8",
     "highcharts-ng": "0.0.11",
     "jquery": "~2.1.4",
     "moment": "~2.10.6"
