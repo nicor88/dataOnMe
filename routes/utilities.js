@@ -52,7 +52,7 @@ module.exports = {
                              });
                         }else {
                             console.log('Check email:' + mailconfig.mailcheck);
-                            var registrationLink = mailconfig.activationLinkLocal + user.activationtoken;
+                            var registrationLink = mailconfig.activationLink + user.activationtoken;
                             var transporter = nodemailer.createTransport(mailconfig.gmail);
                             mailconfig.registrationMailEnglish.from = mailconfig.gmail.auth.user;
                             mailconfig.registrationMailEnglish.to = user.email;
