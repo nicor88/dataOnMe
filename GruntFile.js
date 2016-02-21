@@ -110,8 +110,7 @@ module.exports = function(grunt) {
         }
     });
     grunt.registerTask('start local server', ['nodemon']);
-    /*grunt.registerTask('create dataonme.js', ['concat']);*/
-    /*grunt.registerTask('create dataonme.min.js', ['uglify']);*/
+    grunt.registerTask('app with minification', ['concat','uglify']);
     grunt.registerTask('validate JS', ['jshint']);
     grunt.registerTask('minification', ['cssmin','uglify']);
     grunt.registerTask('create files for remote deploy on development-AWS', ['cssmin','uglify','clean','copy','rename']);
