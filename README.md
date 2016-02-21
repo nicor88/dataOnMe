@@ -9,20 +9,20 @@ The plaform is based on Node.js and MongoDB.
 ##Requirements
 * Node.js and Npm 
 * MongoDB 
-* Node.js Libraries  ```javascript npm install ```
-* Bower  ```javascript npm install -g bower ```
+* Node.js Libraries  ```npm install ```
+* Bower  ``` npm install -g bower ```
 * Front-end libraries bower install
 
 ##Sample data
 To have basic data run
-```javascript node initMetadata.js ```
+```node initMetadata.js ```
 
 ##Start server
-```javascript node server.js ```
+```node server.js ```
 
 ##Login in the plaform using  
-    user    : user  
-    password: password
+*user    : user  
+*password: password
 
 ##Demo 
 Sample demo [here](http://52.27.176.15/)
