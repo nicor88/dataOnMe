@@ -21,8 +21,8 @@ To start the server run:
 
 
 ##Login in the plaform using  
-*user    : user  
-*password: password
+user    : user  
+password: password
 
 ##Demo 
 Sample demo [here](http://52.27.176.15/)
