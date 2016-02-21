@@ -18,7 +18,7 @@ To have basic data run
 ##Start server
 To start the server run:
 ```node server.js ```
-or 
+
 
 ##Login in the plaform using  
 *user    : user  
