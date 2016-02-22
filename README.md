@@ -9,7 +9,7 @@ The plaform is based on Node.js and MongoDB.
 * MongoDB 
 * Node.js Libraries  ```npm install ```
 * Bower  ``` npm install -g bower ```
-* Front-end libraries bower install
+* Front-end libraries ```bower install```
 
 ##Sample data
 To have basic data run
