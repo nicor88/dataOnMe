@@ -19,10 +19,6 @@ To have basic data run
 To start the server run:
 ```node server.js ```
 
-
 ##Login in the plaform using  
 user    : user  
 password: password
-
-##Demo 
-Sample demo [here](http://52.27.176.15/)
