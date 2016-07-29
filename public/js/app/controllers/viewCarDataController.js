@@ -1,5 +1,6 @@
 (function(){
     var viewCarDataController= function($scope,$rootScope,$routeParams,$http,$window,authFactory,carsFactory,refuellingFactory,chartsFactory) {
+        console.log(moment(new Date()).format('MMM Do'));
         var carId=$routeParams.carId;
         $scope.showSpinner=true;
 

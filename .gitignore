@@ -3,3 +3,5 @@
 configsRemote/
 node_modules/
 public/libs
+/public/js/dataonme.min.js
+/public/js/dataonme.js

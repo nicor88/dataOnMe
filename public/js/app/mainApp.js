@@ -1,4 +1,4 @@
-var app = angular.module('dataOnMe', ['ngRoute','highcharts-ng','ui.bootstrap','ngAnimate']);
+var app = angular.module('dataOnMe', ['ngRoute','highcharts-ng','ui.bootstrap','ngAnimate','angularMoment']);
 (function() {
     var routing = function ($routeProvider) {
         $routeProvider
