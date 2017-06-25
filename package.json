@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "grunt build",
+    "build-min": "grunt build-min",
     "postinstall": "bower install",
     "server": "node server/server.js",
     "server-dev": "grunt server-dev",

@@ -12,13 +12,14 @@ The plaform is based on Node.js and MongoDB.
 * Install dependencies: `npm install`
 * Start Docker 
 * Run `docker-compose up`
-* Build the frontend app: `grunt build`
-* Run server: `npn run server
+* Build the frontend app: `npm run build` or `npm build-min`
+* Run server: `npn run server` or `npm run server-dev`
 
 ## Initialize data
 To have basic data run
 ```node initMetadata.js ```
-Credentials:
-<pre>
 
+<pre>Credentials:
+User: user
+Password: password
 </pre>

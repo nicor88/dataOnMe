@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 files: {
-                 'dist/js/dataonme.js': ['public/js/app/*.js','public/js/app/*/*.js']
+                 'dist/js/dataonme.js': ['app/*.js','app/*/*.js']
                  }
             }
         },
@@ -68,7 +68,7 @@ module.exports = function(grunt) {
         }
     });
     grunt.registerTask('server-dev', ['nodemon']);
-    grunt.registerTask('build', ['clean','copy:dist','copy:css','concat:js']);
-    grunt.registerTask('build-min', ['clean','copy:dist','cssmin:dist','uglify:dist']);
-  grunt.registerTask('lint', ['jshint']);
+    grunt.registerTask('build', ['copy:dist','copy:css','concat:js']);
+    grunt.registerTask('build-min', ['copy:dist','cssmin:dist','uglify:dist']);
+    grunt.registerTask('lint', ['jshint']);
 };
