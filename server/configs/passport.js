@@ -2,8 +2,9 @@ var LocalStrategy = require('passport-local').Strategy;
 var BearerStrategy = require('passport-http-bearer').Strategy;
 var moment = require('moment');
 var User = require('../models/user');
-var jwtTokenSecret = 'dataonme';
 var bcrypt = require('bcrypt-nodejs');
+var jwtTokenSecret = 'dataonme';
+
 
 module.exports = function(app, passport) {
     // used to serialize the user for the session
