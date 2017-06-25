@@ -1,5 +1,12 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
-configsRemote/
+
+# data
+data/
+
+# node
 node_modules/
-public/libs
+
+# build
+
+dist/

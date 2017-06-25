@@ -10,59 +10,51 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-exec');
 
     grunt.initConfig({
-        // configure nodemon
         nodemon: {
             dev: {
-                script: 'server.js'
+                script: 'server/server.js'
             }
         },
         concat: {
             js: {
-                src: ['public/js/app/*.js','public/js/app/*/*.js'],
-                dest: 'public/js/dataonme.js'
+                src: ['app/*.js','app/*/*.js'],
+                dest: 'dist/js/dataonme.js'
             }
         },
-        clean: ["server-files"]
-        ,
+        clean: ["dist"],
         copy: {
-            main: {
+            dist: {
                 files: [
                     // includes files within path and its sub-directories
-                    {expand: true, src: ['configsRemote/**'], dest: 'server-files/'},
-                    {expand: true, src: ['mail_utilities/**'], dest: 'server-files/'},
-                    {expand: true, src: ['models/**'], dest: 'server-files/'},
-                    {expand: true, src: ['public/**','!public/libs/**','!public/js/**'], dest: 'server-files/'},
-                    {expand: true, src: ['public/js/*.js'], dest: 'server-files/'},
-                    {expand: true, src: ['routes/**'], dest: 'server-files/'},
-                    {expand: true, src: ['utilities/**'], dest: 'server-files/'},
-                    {expand: true, src: ['./*.js','!GruntFile.js'], dest: 'server-files/'},
-                    {expand: true, src: ['./*.json'], dest: 'server-files/'},
-                    {expand: true, src: ['.bowerrc'], dest: 'server-files/'}
+                    {expand: true, flatten: true, src: ['public/img/*'], dest: 'dist/img/'},
+                    {expand: true, flatten: true, src: ['public/js/*.js'], dest: 'dist/js/'},
+                    {expand: true, flatten: true, src: ['app/dataOnMeViews/*'], dest: 'dist/dataOnMeViews/'},
+                    {expand: true, flatten: true,
+                      src: ['app/fuelConsumationViews/*'], dest: 'dist/fuelConsumationViews/'},
                 ]
-            }
-        },
-        rename: {
-            main: {
-                files: [
-                    {src: ['server-files/configsRemote'], dest: 'server-files/configs'},
-                ]
-            }
+            },
+          css: {
+            files: [
+              // includes files within path and its sub-directories
+              {expand: true, flatten: true, src: ['public/css/*'], dest: 'dist/css/'}
+            ]
+          }
         },
         cssmin: {
-            target: {
+            dist: {
                 files: [{
                     expand: true,
                     cwd: 'public/css',
                     src: ['*.css', '!*.min.css'],
-                    dest: 'public/css',
-                    ext: '.min.css'
+                    dest: 'dist/css',
+                    ext: '.css'
                 }]
             }
         },
         uglify: {
-            build: {
+            dist: {
                 files: {
-                 'public/js/dataonme.min.js': ['public/js/app/*.js','public/js/app/*/*.js']
+                 'dist/js/dataonme.js': ['public/js/app/*.js','public/js/app/*/*.js']
                  }
             }
         },
@@ -73,50 +65,10 @@ module.exports = function(grunt) {
                     jQuery: true
                 }
             }
-        },
-        exec: {
-            loadToAWS:{
-                cmd: 'scp -r server-files/. nodejs@development-AWS:/home/nodejs/servers/dataonme'
-            },
-            startDataOnMe:{
-                cmd: 'ssh nodejs@development-AWS forever start  --spinSleepTime 5000 servers/dataonme/server.js'
-            },
-            stopDataOnMe:{
-                cmd: 'ssh nodejs@development-AWS forever stop 1'
-            },
-            updateNodeLibs:{
-                cmd: 'ssh nodejs@development-AWS npm install --prefix /home/nodejs/servers/dataonme'
-            },
-            updateBowerLibs:{
-                cmd: 'ssh nodejs@development-AWS sh scripts/bowerDataOnMe.sh'
-            },
-            list_files: {
-                cmd: 'ls -l **'
-            },
-            list_all_files: 'ls -la',
-            echo_grunt_version: {
-                cmd: function() { return 'echo ' + this.version; }
-            },
-            echo_name: {
-                cmd: function(firstName, lastName) {
-                    var formattedName = [
-                        lastName.toUpperCase(),
-                        firstName.toUpperCase()
-                    ].join(', ');
-
-                    return 'echo ' + formattedName;
-                }
-            }
         }
     });
-    grunt.registerTask('start local server', ['nodemon']);
-    /*grunt.registerTask('create dataonme.js', ['concat']);*/
-    /*grunt.registerTask('create dataonme.min.js', ['uglify']);*/
-    grunt.registerTask('validate JS', ['jshint']);
-    grunt.registerTask('minification', ['cssmin','uglify']);
-    grunt.registerTask('create files for remote deploy on development-AWS', ['cssmin','uglify','clean','copy','rename']);
-    grunt.registerTask('copy server-files to development-AWS', ['exec:loadToAWS']);
-    grunt.registerTask('complete deploy', ['clean','copy','rename','exec:loadToAWS','exec:stopDataOnMe','exec:updateNodeLibs','exec:updateBowerLibs','exec:startDataOnMe']);
-    grunt.registerTask('complete deploy - server down', ['clean','copy','rename','exec:loadToAWS','exec:updateNodeLibs','exec:updateBowerLibs','exec:startDataOnMe']);
-    /*grunt.registerTask('list all files', ['exec:list_all_files']);*/
+    grunt.registerTask('server-dev', ['nodemon']);
+    grunt.registerTask('build', ['clean','copy:dist','copy:css','concat:js']);
+    grunt.registerTask('build-min', ['clean','copy:dist','cssmin:dist','uglify:dist']);
+  grunt.registerTask('lint', ['jshint']);
 };

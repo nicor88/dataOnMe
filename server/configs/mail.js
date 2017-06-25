@@ -4,8 +4,8 @@ module.exports = {
     'gmail' : {
         service: 'Gmail',
         auth: {
-            user: 'user@gmail.com',
-            pass: 'password'
+            user: 'user@gmail.com', //TODO use env variable to load here
+            pass: 'password' //TODO use env variable to load here
         }
     },
     'registrationMailEnglish':{

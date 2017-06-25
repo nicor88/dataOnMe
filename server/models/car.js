@@ -19,9 +19,9 @@ CarSchema.statics.findById = function (carId,callback) {
                 callback(false,result);
             } else {
                 callback(err,false);
-            };
+            }
         });
-}
+};
 
 CarSchema.statics.findByUserId = function (userId,callback) {
     this.find({userId:userId})
@@ -30,9 +30,9 @@ CarSchema.statics.findByUserId = function (userId,callback) {
                 callback(false,result);
             } else {
                 callback(err,false);
-            };
+            }
         });
-}
+};
 
 CarSchema.statics.findByCarNameAndUserId = function (userId,carName,callback) {
     this.find({userId:userId,name:carName})
@@ -41,9 +41,9 @@ CarSchema.statics.findByCarNameAndUserId = function (userId,carName,callback) {
                 callback(false,result);
             } else {
                 callback(err,false);
-            };
+            }
         });
-}
+};
 
 CarSchema.statics.updateCar = function (carId,elementsToUpdate,callback) {
     var conditions = { _id: carId };
@@ -52,7 +52,7 @@ CarSchema.statics.updateCar = function (carId,elementsToUpdate,callback) {
         if(err) callback(err,false);
         callback(false,numAffected);
     });
-}
+};
 
 var Car = mongoose.model('Car', CarSchema);
 module.exports = Car;
