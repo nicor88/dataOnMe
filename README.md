@@ -12,7 +12,7 @@ The plaform is based on Node.js and MongoDB.
 * Install dependencies: `npm install`
 * Start Docker 
 * Run `docker-compose up`
-* Build the frontend app: `npm run build` or `npm build-min`
+* Build the frontend app: `npm run build` or `npm run build-min`
 * Run server: `npn run server` or `npm run server-dev`
 
 ## Initialize data
