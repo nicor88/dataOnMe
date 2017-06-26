@@ -19,7 +19,7 @@ The plaform is based on Node.js and MongoDB.
 To have basic data run
 ```node initMetadata.js ```
 
-<pre>Credentials:
+<pre>Credentials
 User: user
 Password: password
 </pre>
